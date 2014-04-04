@@ -18,8 +18,14 @@ namespace MasterKey.Identity
         public static AppUserManager Create(IdentityFactoryOptions<AppUserManager> options, IOwinContext context)
         {
             var manager = new AppUserManager(new UserStore<AppUserIdentity>(context.Get<AppUserIdentityDbContext>()));
+            manager.RegisterTwoFactorProvider("PhoneCode", new PhoneNumberTokenProvider<AppUserIdentity>
+            {
+                MessageFormat = "Your security code is: {0}"
+            });
+            manager.SmsService = new SmsService();
             return manager;
         }
 
     }
+
 }

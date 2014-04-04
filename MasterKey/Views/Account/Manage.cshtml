@@ -1,5 +1,8 @@
 ﻿@using MasterKey.Models;
 @using Microsoft.AspNet.Identity;
+
+@model MasterKey.Models.ManageUserViewModel
+
 @{
     ViewBag.Title = "Manage Account";
 }
@@ -17,7 +20,31 @@
         {
             @Html.Partial("_SetPasswordPartial")
         }
-
+        <p>
+            Phone Number: @(Model.PhoneNumber ?? "None") [
+            @if (Model.PhoneNumber != null)
+            {
+                @Html.ActionLink("Change", "AddPhoneNumber")
+                @: &nbsp;|&nbsp;
+                @Html.ActionLink("Remove", "RemovePhoneNumber")
+            }
+            else
+            {
+                @Html.ActionLink("Add", "AddPhoneNumber")
+            }
+            ]
+        </p>
+        <p>
+            Two Factor Enabled: @(Model.HasTwoFactor)
+            @if (Model.HasTwoFactor)
+            {
+                @Html.ActionLink("[Disable]", "DisableTFA")
+            }
+            else
+            {
+                @Html.ActionLink("[Enable]", "EnableTFA")
+            }
+        </p>
         <section id="externalLogins">
             @Html.Action("RemoveAccountList")
             @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
