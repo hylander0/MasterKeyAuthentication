@@ -201,7 +201,7 @@
     </Compile>
     <Compile Include="Identity\AppUserManager.cs" />
     <Compile Include="Identity\SignInHelper.cs" />
-    <Compile Include="Identity\SmsService.cs" />
+    <Compile Include="Identity\GoogleSmsService.cs" />
     <Compile Include="Identity\UserStore\AppUserIdentity.cs" />
     <Compile Include="Identity\UserStore\AppUserIdentityDbContextInitializer.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

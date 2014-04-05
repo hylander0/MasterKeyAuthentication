@@ -22,7 +22,7 @@ namespace MasterKey.Identity
             {
                 MessageFormat = "Your security code is: {0}"
             });
-            manager.SmsService = new SmsService();
+            manager.SmsService = new GoogleSmsService();
             return manager;
         }
 
