@@ -30,7 +30,7 @@ namespace MasterKey.Controllers.Api
         } 
 
       
-        [HttpGet]
+        [HttpPost]
         [ActionName("Authenticate")]
         [AllowAnonymous]
         public String Authenticate(string user, string password)
